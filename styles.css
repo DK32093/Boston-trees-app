@@ -1,5 +1,19 @@
 #map {
     width: 75%;
-    height: 75vh;
+    height: 100vh;
 }
 
+
+/* This removes the first column (fid) from the popup table */
+table caption
+{
+	display:none;
+}
+table.featureInfo > tbody > tr > th:first-child
+{
+	display:none;
+}
+table.featureInfo > tbody > tr > td:first-child
+{
+	display:none;
+}
