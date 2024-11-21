@@ -1,10 +1,10 @@
 const map = L.map('map').setView([42.31000, -71.064881], 11.5);
 
 // Get OSM basemap
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri.WorldStreetMap @ https://leaflet-extras.github.io/leaflet-providers/preview/',
     maxZoom: 20,
-    maxNativeZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    maxNativeZoom: 19
 }).addTo(map);
 
 // Get Boston border GeoJSON and add style
@@ -30,7 +30,7 @@ const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Tree
     cql_filter: "spp_com<>'Empty Pit/Planting Site'"
 }).addTo(map);
 
-
+L.Control.geocoder().addTo(map);
 
 
 
