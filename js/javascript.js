@@ -1,6 +1,6 @@
 const map = L.map('map').setView([42.31000, -71.064881], 11.5);
 
-// Get OSM basemap
+// Get basemap
 var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri.WorldStreetMap @ https://leaflet-extras.github.io/leaflet-providers/preview/',
     maxZoom: 20,
@@ -29,6 +29,19 @@ const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Tree
     transparent: true,
     cql_filter: "spp_com<>'Empty Pit/Planting Site'"
 }).addTo(map);
+
+
+var legend = L.control({position: 'bottomright'});
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info');
+    
+        div.innerHTML +=
+        '<img src="assets/tree.svg" width=40 height=40><p>Street Tree</p>';
+    
+    return div;
+    };
+
+legend.addTo(map);
 
 L.Control.geocoder().addTo(map);
 

@@ -3,6 +3,15 @@
     height: 100vh;
 }
 
+.info {
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 0.25;
+    padding: 10px;
+    border-radius: 1rem;
+    border: #b7b7b7 solid 2px;
+}
 
 /* This removes the first column (fid) from the popup table */
 table caption
@@ -17,3 +26,4 @@ table.featureInfo > tbody > tr > td:first-child
 {
 	display:none;
 }
+
