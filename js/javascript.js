@@ -21,15 +21,17 @@ let response = fetch(url).then(response => response.json()).then(response => {
     ).addTo(map)
 }); 
 
-//load street trees layer from geoserver
+//load street trees layer from geoserver (Popups are set up in L.TileLayer.BetterWMS.js)
 const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Trees_BOS/wms", {
     maxZoom: 20,
     layers: 'Trees_BOS:treekeeper_street_trees',
     format: 'image/png',
-    transparent: true
-});
+    transparent: true,
+    cql_filter: "spp_com<>'Empty Pit/Planting Site'"
+}).addTo(map);
 
-street_trees.addTo(map);
+
+
 
 
 
