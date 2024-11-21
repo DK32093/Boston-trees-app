@@ -26,16 +26,18 @@
 /* This removes the first column (fid) from the popup table */
 table.featureInfo > tbody > tr > th, table.featureInfo > tbody > tr > td {
     background: black;
-    color: red;
+    color: #ffffff;
+    border: none;
+    border-style: hidden;
+    font-size: 1rem;
+}
+
+table.featureInfo, table.featureInfo > tbody > tr > th {
     border: none;
     border-style: hidden;
 }
 
-pop{
-    font-size: 20px;
-}
-table.featureInfo, table.featureInfo > tbody > tr > th {
-    border: none;
+tbody {
     border-style: hidden;
 }
 
@@ -43,7 +45,7 @@ table caption
 {
 	display:none;
 }
-table.featureInfo > tbody > tr > th:first-child
+table.featureInfo > tbody > tr > th:nth-child(-n + 2)
 {
 	display:none;
 }
