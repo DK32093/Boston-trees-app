@@ -1,3 +1,7 @@
+* {
+    
+}
+
 #map {
     width: 75%;
     height: 100vh;
@@ -13,7 +17,28 @@
     border: #b7b7b7 solid 2px;
 }
 
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: black;
+}
+
+
 /* This removes the first column (fid) from the popup table */
+table.featureInfo > tbody > tr > th, table.featureInfo > tbody > tr > td {
+    background: black;
+    color: red;
+    border: none;
+    border-style: hidden;
+}
+
+pop{
+    font-size: 20px;
+}
+table.featureInfo, table.featureInfo > tbody > tr > th {
+    border: none;
+    border-style: hidden;
+}
+
 table caption
 {
 	display:none;

@@ -52,7 +52,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
             layers: this.wmsParams.layers,
             query_layers: this.wmsParams.layers,
             info_format: 'text/html',
-            propertyName: 'spp_com', // added to specify which field is returned for popup
+            propertyName: 'species', // added to specify which field is returned for popup
           };
       
       params[params.version === '1.3.0' ? 'i' : 'x'] = Math.round(point.x);
@@ -65,7 +65,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
       if (err) { console.log(err); return; } // do nothing if there's an error
       
       // Otherwise show the content in a popup, or something.
-      L.popup({ maxWidth: 800})
+      L.popup({ maxWidth: 800, className: 'pop'})
         .setLatLng(latlng)
         .setContent(content)
         .openOn(this._map);

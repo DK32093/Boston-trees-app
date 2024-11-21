@@ -27,19 +27,16 @@ const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Tree
     layers: 'Trees_BOS:treekeeper_street_trees',
     format: 'image/png',
     transparent: true,
-    cql_filter: "spp_com<>'Empty Pit/Planting Site'"
+    cql_filter: "species<>'Empty Pit/Planting Site'"
 }).addTo(map);
 
-
+// Create legend
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info');
-    
-        div.innerHTML +=
-        '<img src="assets/tree.svg" width=40 height=40><p>Street Tree</p>';
-    
+    div.innerHTML += '<img src="assets/tree.svg" width=40 height=40 alt="street tree"><p>Street Tree</p>';
     return div;
-    };
+};
 
 legend.addTo(map);
 
