@@ -23,7 +23,9 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
         url: url,
         success: function (data, status, xhr) {
           var err = typeof data === 'string' ? null : data;
-          showResults(err, evt.latlng, data);
+          var doc = (new DOMParser()).parseFromString(data, "text/html"); 
+          if (doc.body.innerHTML.trim().length > 0)
+            showResults(err, evt.latlng, data);
         },
         error: function (xhr, status, error) {
           showResults(error);  
