@@ -38,7 +38,16 @@ legend.onAdd = function (map) {
     return div;
 };
 
+var logo = L.control({position: 'bottomleft'});
+logo.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'logo');
+    div.innerHTML += 
+    '<img src="assets/dk.png" width=70 height=70 alt="Dylan Kelly"><p><strong>Dylan Kelly</strong></p><a href="https://www.linkedin.com/in/dylanrk93/" style=color:black>LinkedIn</a>';
+    return div;
+};
+
 legend.addTo(map);
+logo.addTo(map);
 
 L.Control.geocoder().addTo(map);
 
