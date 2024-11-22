@@ -27,6 +27,7 @@ body {
     background: rgb(3, 3, 3, 0.25);
     padding: 0.75rem;
     border-radius: 1rem;
+    transform: translate(0%, -15%);
 }
 
 a {
