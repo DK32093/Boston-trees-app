@@ -52,7 +52,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
             layers: this.wmsParams.layers,
             query_layers: this.wmsParams.layers,
             info_format: 'text/html',
-            propertyName: 'species', // added to specify which field is returned for popup
+            propertyName: 'full_name', // added to specify which field is returned for popup
           };
       
       params[params.version === '1.3.0' ? 'i' : 'x'] = Math.round(point.x);

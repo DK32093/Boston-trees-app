@@ -27,7 +27,7 @@ const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Tree
     layers: 'Trees_BOS:treekeeper_street_trees',
     format: 'image/png',
     transparent: true,
-    cql_filter: "species<>'Empty Pit/Planting Site'"
+    cql_filter: "full_name<>'Empty Pit/Planting Site' AND full_name<>'Vacant Unacceptable/Retired' AND full_name<>'Scheduled Planting Site - Fall 2024'"
 }).addTo(map);
 
 // Create legend
