@@ -1,4 +1,7 @@
+
 const map = L.map('map').setView([42.31000, -71.064881], 11.5);
+
+console.log(map.CRS)
 
 // Get basemap
 const Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -20,14 +23,68 @@ const response = fetch(url).then(response => response.json()).then(response => {
       }).addTo(map)
 }); 
 
-//load street trees layer from geoserver (Popups are set up in L.TileLayer.BetterWMS.js)
-const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Trees_BOS/wms", {
-    maxZoom: 20,
-    layers: 'Trees_BOS:treekeeper_street_trees',
-    format: 'image/png',
-    transparent: true,
-    cql_filter: "full_name <> 'Empty Pit/Planting Site'"
-}).addTo(map);
+
+//Street trees data
+
+//Initial point style
+var geojsonMarkerOptions = {
+    radius: 3,
+    fillColor: "#544a24",
+    color: "#2A7E19",
+    weight: 3,
+    opacity: 1,
+    fillOpacity: 1
+};
+
+//Zoomed-in point style
+var geojsonMarkerOptions2 = {
+    radius: 12,
+    fillColor: "#544a24",
+    color: "#2A7E19",
+    weight: 12,
+    opacity: 1,
+    fillOpacity: 1
+};
+
+//Load street trees in Back Bay with initial styling
+const ST_url = 'geo/BackBayTrees.geojson';
+const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
+      treeGeoJSON = L.geoJson(ST_response, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, geojsonMarkerOptions);
+        }
+      }).addTo(map)
+}); 
+
+//Change styling a max zoom and reset when zooming back out
+let c = 0
+map.on('zoomend', function() {
+    const currentZoom = map.getZoom();
+    if (currentZoom > 19) {
+        map.removeLayer(treeGeoJSON)
+        const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
+            treeGeoJSONz = L.geoJson(ST_response, {
+              pointToLayer: function (feature, latlng) {
+                  return L.circleMarker(latlng, geojsonMarkerOptions2);
+              }
+            }).addTo(map)
+        }) 
+        return c = 1
+    } else {
+        if (c === 1) {
+            map.removeLayer(treeGeoJSONz)
+            const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
+                treeGeoJSON = L.geoJson(ST_response, {
+                  pointToLayer: function (feature, latlng) {
+                      return L.circleMarker(latlng, geojsonMarkerOptions);
+                  }
+                }).addTo(map)
+          }); 
+        }
+        return c = 0
+    }
+})
+
 
 // Create legend
 var legend = L.control({position: 'bottomright'});
@@ -52,4 +109,3 @@ legend.addTo(map);
 logo.addTo(map);
 
 L.Control.geocoder().addTo(map);
-//test
