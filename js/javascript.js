@@ -52,3 +52,4 @@ legend.addTo(map);
 logo.addTo(map);
 
 L.Control.geocoder().addTo(map);
+//test
