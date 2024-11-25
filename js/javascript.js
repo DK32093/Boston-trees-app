@@ -1,8 +1,6 @@
 
 const map = L.map('map').setView([42.31000, -71.064881], 11.5);
 
-console.log(map.CRS)
-
 // Get basemap
 const Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri.WorldStreetMap @ https://leaflet-extras.github.io/leaflet-providers/preview/',
@@ -23,8 +21,14 @@ const response = fetch(url).then(response => response.json()).then(response => {
       }).addTo(map)
 }); 
 
-
 //Street trees data
+
+//filter
+function siteFilter(feature) {
+    if ((feature.properties.spp_com !== "Vacant Unacceptable/Retired") && 
+    (feature.properties.spp_com !== "Empty Pit/Planting Site"))
+        return true
+};
 
 //Initial point style
 var geojsonMarkerOptions = {
@@ -50,8 +54,11 @@ var geojsonMarkerOptions2 = {
 const ST_url = 'geo/BackBayTrees.geojson';
 const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
       treeGeoJSON = L.geoJson(ST_response, {
+        filter: siteFilter,
         pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, geojsonMarkerOptions);
+            full_name = feature.properties.spp_com.split(',').reverse().join(" ");
+            let marker = L.circleMarker(latlng, geojsonMarkerOptions);
+            return marker.bindPopup(full_name)
         }
       }).addTo(map)
 }); 
@@ -64,8 +71,11 @@ map.on('zoomend', function() {
         map.removeLayer(treeGeoJSON)
         const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
             treeGeoJSONz = L.geoJson(ST_response, {
+              filter: siteFilter,
               pointToLayer: function (feature, latlng) {
-                  return L.circleMarker(latlng, geojsonMarkerOptions2);
+                full_name = feature.properties.spp_com.split(',').reverse().join(" ");
+                let marker = L.circleMarker(latlng, geojsonMarkerOptions2);
+                return marker.bindPopup(full_name);
               }
             }).addTo(map)
         }) 
@@ -75,8 +85,11 @@ map.on('zoomend', function() {
             map.removeLayer(treeGeoJSONz)
             const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
                 treeGeoJSON = L.geoJson(ST_response, {
+                  filter: siteFilter,
                   pointToLayer: function (feature, latlng) {
-                      return L.circleMarker(latlng, geojsonMarkerOptions);
+                    full_name = feature.properties.spp_com.split(',').reverse().join(" ");
+                    let marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                    return marker.bindPopup(full_name);
                   }
                 }).addTo(map)
           }); 
@@ -90,7 +103,7 @@ map.on('zoomend', function() {
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info');
-    div.innerHTML += '<img src="assets/tree.svg" width=40 height=40 alt="street tree"><p>Street Tree</p>';
+    div.innerHTML += '<img src="assets/simple_tree.png" width=40 height=40 alt="street tree"><p>Street Tree</p>';
     return div;
 };
 

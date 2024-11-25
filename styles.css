@@ -50,6 +50,7 @@ a:hover {
 /* Style popups */
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
     background: black;
+    color: #ffffff;
 }
 
 table.featureInfo > tbody > tr > th, table.featureInfo > tbody > tr > td {
