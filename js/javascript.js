@@ -64,7 +64,7 @@ const ST_response = fetch(ST_url).then(response => response.json()).then(ST_resp
 }); 
 
 //Change styling at max zoom and reset when zooming back out
-let c = 0
+let treeGeoJSONz = L.geoJson() // initialize here to allow zoom logic
 map.on('zoomend', function() {
     const currentZoom = map.getZoom();
     if (currentZoom > 19) {
@@ -79,9 +79,8 @@ map.on('zoomend', function() {
               }
             }).addTo(map)
         }) 
-        return c = 1
     } else {
-        if (c === 1) {
+        if (map.hasLayer(treeGeoJSONz)) {
             map.removeLayer(treeGeoJSONz)
             const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
                 treeGeoJSON = L.geoJson(ST_response, {
@@ -94,7 +93,6 @@ map.on('zoomend', function() {
                 }).addTo(map)
           }); 
         }
-        return c = 0
     }
 });
 
