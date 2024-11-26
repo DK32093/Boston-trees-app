@@ -1,5 +1,5 @@
 
-const map = L.map('map').setView([42.34488628077827, -71.06897719272507], 15);
+const map = L.map('map', {bounceAtZoomLimits: false}).setView([42.34488628077827, -71.06897719272507], 15);
 
 // Get basemap
 const Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -68,6 +68,7 @@ let treeGeoJSONz = L.geoJson() // initialize here to allow zoom logic
 map.on('zoomend', function() {
     const currentZoom = map.getZoom();
     if (currentZoom > 19) {
+        console.log("max zoom fired")
         map.removeLayer(treeGeoJSON)
         const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
             treeGeoJSONz = L.geoJson(ST_response, {
@@ -81,6 +82,7 @@ map.on('zoomend', function() {
         }) 
     } else {
         if (map.hasLayer(treeGeoJSONz)) {
+            console.log("out zoom fired")
             map.removeLayer(treeGeoJSONz)
             const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
                 treeGeoJSON = L.geoJson(ST_response, {
