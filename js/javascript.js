@@ -111,9 +111,9 @@ const logo = L.control({position: 'bottomleft'});
 logo.onAdd = function (map) {
     const Ldiv = L.DomUtil.create('div', 'logo');
     if (window.innerWidth <= 768) {
-        Ldiv.style.transform = "translateY(-38%)";
+        Ldiv.style.transform = "translateY(-36%)";
         const title = L.DomUtil.create('div', 'title', Ldiv);
-        title.style.paddingLeft = "0.5rem";
+        title.style.paddingLeft = "0.1rem";
         title.innerHTML += '<p style=font-size:1rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:0.9rem> Street Tree Species in Boston, MA</p><p style=font-size:0.8rem><em>Back Bay Demo</em></p><p style=font-size:0.8rem>Created by <a href="https://github.com/DK32093/Boston-trees-app/tree/main" style=color:white>Dylan Kelly<a/></p>';
     } else {
         const pic = L.DomUtil.create('div', 'pic', Ldiv)
