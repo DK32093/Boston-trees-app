@@ -109,20 +109,18 @@ legend.onAdd = function (map) {
 // Create logo
 const logo = L.control({position: 'bottomleft'});
 logo.onAdd = function (map) {
-    const div = L.DomUtil.create('div', 'logo');
+    const Ldiv = L.DomUtil.create('div', 'logo');
     if (window.innerWidth <= 768) {
-        const title = L.DomUtil.create('div', 'title', div);
-        title.innerHTML += '<p style=font-size:1rem;font-weight:bold>What&#39s\nThat\nTree?</p><p style=font-size:0.5rem> Street Tree Species in Boston, MA</p><p><em>Back Bay Demo</em></p>';
+        const title = L.DomUtil.create('div', 'title', Ldiv);
+        title.innerHTML += '<p style=font-size:1rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:0.75rem> Street Tree Species in Boston, MA</p><p style=font-size:0.75rem><em>Back Bay Demo</em></p>';
     } else {
-        const pic = L.DomUtil.create('div', 'pic', div)
-        const title = L.DomUtil.create('div', 'title', div);
+        const pic = L.DomUtil.create('div', 'pic', Ldiv)
+        const title = L.DomUtil.create('div', 'title', Ldiv);
         title.innerHTML += '<p style=font-size:2.5rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:1.5rem> Street Tree Species in Boston, MA</p><p><em>Back Bay Demo</em></p>';
         pic.innerHTML += '<img src="assets/dk.png" width=70 height=70 alt="Dylan Kelly"><p><strong>Dylan Kelly</strong></p><a href="https://github.com/DK32093/Boston-trees-app/tree/main" style=color:white>Github</a>';
     }
-    return div;
+    return Ldiv;
 };
-
-// Add logic for mobile display
 
 
 //Add legend, logo, and geocoder
