@@ -2,7 +2,7 @@
 const map = L.map('map', {bounceAtZoomLimits: false}).setView([42.34488628077827, -71.06897719272507], 15);
 
 // Get basemap
-const Esri_WorldStreetMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const OSMbase = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 20,
     maxNativeZoom: 19
@@ -113,12 +113,12 @@ logo.onAdd = function (map) {
         const title = L.DomUtil.create('div', 'title', Ldiv);
         title.style.paddingLeft = "0.1rem";
         title.style.paddingRight = "0.1rem";
-        title.innerHTML += '<p style=font-size:1rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:0.8rem><strong>Street Tree Species in Boston, MA</strong></p><p style=font-size:0.8rem><em>Back Bay Demo</em></p><p style=font-size:0.8rem>Created by <a href="https://github.com/DK32093/Boston-trees-app/tree/main" style=color:white>Dylan Kelly<a/></p>';
+        title.innerHTML += '<p style=font-size:1rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:0.8rem><strong>Street Tree Species in Boston, MA</strong></p><p style=font-size:0.8rem><em>Back Bay Demo</em></p><p style=font-size:0.8rem>Created by <a href="https://github.com/DK32093/Boston-trees-app/tree/External-access" style=color:white>Dylan Kelly<a/></p>';
     } else {
         const pic = L.DomUtil.create('div', 'pic', Ldiv)
         const title = L.DomUtil.create('div', 'title', Ldiv);
         title.innerHTML += '<p style=font-size:2.5rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:1.5rem> Street Tree Species in Boston, MA</p><p><em>Back Bay Demo</em></p>';
-        pic.innerHTML += '<img src="assets/dk.png" width=70 height=70 alt="Dylan Kelly"><p><strong>Dylan Kelly</strong></p><a href="https://github.com/DK32093/Boston-trees-app/tree/main" style=color:white>Github</a>';
+        pic.innerHTML += '<img src="assets/dk.png" width=70 height=70 alt="Dylan Kelly"><p><strong>Dylan Kelly</strong></p><a href="https://github.com/DK32093/Boston-trees-app/tree/External-access" style=color:white>Github</a>';
     }
     return Ldiv;
 };
