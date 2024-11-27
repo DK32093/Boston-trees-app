@@ -67,7 +67,7 @@ const ST_response = fetch(ST_url).then(response => response.json()).then(ST_resp
 let treeGeoJSONz = L.geoJson() // initialize here to allow zoom logic
 map.on('zoomend', function() {
     const currentZoom = map.getZoom();
-    if (currentZoom > 19) {
+    if (currentZoom === 20) {
         console.log("max zoom fired")
         map.removeLayer(treeGeoJSON)
         const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
