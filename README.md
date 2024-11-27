@@ -18,3 +18,6 @@ Demo code: https://github.com/DK32093/Boston-trees-app/tree/External-access
 WMS code: https://github.com/DK32093/Boston-trees-app/tree/main
 Street trees data: https://data.boston.gov/dataset/treekeeper-street-trees
 
+![alt text](<Screenshot 2024-11-22 at 8.11.34 PM.png>)
+![alt text](<Screenshot 2024-11-22 at 8.05.04 PM.png>)
+![alt text](<Screenshot 2024-11-22 at 7.57.39 PM.png>)
