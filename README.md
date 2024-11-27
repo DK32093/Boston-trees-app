@@ -25,6 +25,6 @@ WMS code: https://github.com/DK32093/Boston-trees-app/tree/main
 
 Street trees data: https://data.boston.gov/dataset/treekeeper-street-trees
 
-![Closeup screenshot](<Screenshot1.png>)
-![Medium zoom screenshot](<Screenshot2.png>)
-![Zoomed out screenshot](<Screenshot3.png>)
+![Closeup](Screenshot1.png)
+![Medium zoom](Screenshot2.png)
+![Zoomed out](Screenshot3.png)
