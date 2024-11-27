@@ -30,25 +30,25 @@ const street_trees = L.tileLayer.betterWms("http://localhost:8080/geoserver/Tree
 }).addTo(map);
 
 // Create legend
-var legend = L.control({position: 'bottomright'});
+const legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info');
+    const div = L.DomUtil.create('div', 'info');
     div.innerHTML += '<img src="assets/tree.svg" width=40 height=40 alt="street tree"><p>Street Tree</p>';
     return div;
 };
 
 // Create logo
-var logo = L.control({position: 'bottomleft'});
+const logo = L.control({position: 'bottomleft'});
 logo.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'logo');
-    var pic = L.DomUtil.create('div', 'pic', div)
-    var title = L.DomUtil.create('div', 'title', div);
+    const div = L.DomUtil.create('div', 'logo');
+    const pic = L.DomUtil.create('div', 'pic', div)
+    const title = L.DomUtil.create('div', 'title', div);
     title.innerHTML += '<p style=font-size:2.5rem;font-weight:bold>What&#39s That Tree?</p><p style=font-size:1.5rem> Street Tree Species in Boston, MA</p>';
     pic.innerHTML += '<img src="assets/dk.png" width=70 height=70 alt="Dylan Kelly"><p><strong>Dylan Kelly</strong></p><a href="https://github.com/DK32093/Boston-trees-app/tree/main" style=color:white>Github</a>';
     return div;
 };
 
+// Add legend, title, and geocoder to map
 legend.addTo(map);
 logo.addTo(map);
-
 L.Control.geocoder().addTo(map);
