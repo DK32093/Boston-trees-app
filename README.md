@@ -14,8 +14,8 @@ My process:
 
 During this process, I used SQL statements to query and manipulate the data and created a custom SLD to style the points. I don’t currently have access to a public server, so I branched my GitHub repo and created a live “demo” with a local subset of the data that works on mobile and desktop browsers.
 
-The live demo code is on the "External-access" branch.
-The code for the full version of the app using WMS is the the main branch.
+The live demo code is in the "External-access" branch.
+The code for the full version of the app using WMS is in the main branch.
 
 Live demo: https://dk32093.github.io/Boston-trees-app/
 
@@ -25,6 +25,6 @@ WMS code: https://github.com/DK32093/Boston-trees-app/tree/main
 
 Street trees data: https://data.boston.gov/dataset/treekeeper-street-trees
 
-![alt text](<Screenshot 2024-11-22 at 8.11.34 PM.png>)
-![alt text](<Screenshot 2024-11-22 at 8.05.04 PM.png>)
-![alt text](<Screenshot 2024-11-22 at 7.57.39 PM.png>)
+![alt text](<Screenshot1.png>)
+![alt text](<Screenshot2.png>)
+![alt text](<Screenshot3.png>)
