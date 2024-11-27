@@ -67,7 +67,7 @@ const ST_response = fetch(ST_url).then(response => response.json()).then(ST_resp
 let treeGeoJSONz = L.geoJson() // initialize here to allow zoom logic
 map.on('zoomend', function() {
     const currentZoom = map.getZoom();
-    if (currentZoom === 20) {
+    if (currentZoom === 20 && !map.hasLayer(treeGeoJSONz)) {
         console.log("max zoom fired")
         map.removeLayer(treeGeoJSON)
         const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
@@ -81,7 +81,7 @@ map.on('zoomend', function() {
             }).addTo(map)
         }) 
     } else {
-        if (map.hasLayer(treeGeoJSONz)) {
+        if (map.hasLayer(treeGeoJSONz)) { // possibly add: AND zoom < 20
             console.log("out zoom fired")
             map.removeLayer(treeGeoJSONz)
             const ST_response = fetch(ST_url).then(response => response.json()).then(ST_response => {
