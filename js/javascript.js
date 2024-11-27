@@ -109,7 +109,7 @@ const logo = L.control({position: 'bottomleft'});
 logo.onAdd = function (map) {
     const Ldiv = L.DomUtil.create('div', 'logo');
     if (window.innerWidth <= 768) {
-        Ldiv.style.transform = "translateY(-18%)";
+        Ldiv.style.transform = "translateY(-19%)";
         const title = L.DomUtil.create('div', 'title', Ldiv);
         title.style.paddingLeft = "0.1rem";
         title.style.paddingRight = "0.1rem";
@@ -122,7 +122,6 @@ logo.onAdd = function (map) {
     }
     return Ldiv;
 };
-
 
 //Add legend, logo, and geocoder
 legend.addTo(map);
