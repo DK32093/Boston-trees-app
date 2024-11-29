@@ -2,7 +2,7 @@ const map = L.map('map').setView([42.31000, -71.064881], 11.5);
 
 // Get basemap
 const Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri.WorldStreetMap @ https://leaflet-extras.github.io/leaflet-providers/preview/',
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri.WorldStreetMap @ https://leaflet-extras.github.io/leaflet-providers/preview/',
     maxZoom: 20,
     maxNativeZoom: 19
 }).addTo(map);
